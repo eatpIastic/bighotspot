@@ -14,8 +14,6 @@ register("tick", () => {
         return;
     }
 
-    hotspots.forEach(i => console.log(i.getName()))
-
     let nearbyArmorstand = World.getWorld().func_72839_b(hotspots[0].entity, hotspots[0].entity.func_174813_aQ().func_72314_b(1, 5, 1)).filter(e => e instanceof EntityArmorStand)?.[0];
     if (!nearbyArmorstand) {
         ChatLib.chat(`&7> &cError detecting hotspot type`);
@@ -23,6 +21,6 @@ register("tick", () => {
 
     nearbyArmorstand = new EntityLivingBase(nearbyArmorstand);
 
-    let chatStr = `${nearbyArmorstand.getName().removeFormatting()} hotspot at ${Math.floor(nearbyArmorstand.getX())}, ${Math.floor(nearbyArmorstand.getY())}, ${Math.floor(nearbyArmorstand.getZ())}`;
+    let chatStr = `x: ${Math.floor(nearbyArmorstand.getX())}, y: ${Math.floor(nearbyArmorstand.getY())}, z: ${Math.floor(nearbyArmorstand.getZ())}   ${nearbyArmorstand.getName().removeFormatting()}`;
     ChatLib.say(chatStr);
 });
